@@ -1,5 +1,8 @@
 # Remote NVIDIA vGPU Exporter
 
+![Prometheus+Grafana Integration](https://img.shields.io/badge/Monitoring-Prometheus%20%2B%20Grafana-blue)
+![Docker Support](https://img.shields.io/badge/Deploy-Docker-green)
+
 Prometheus-экспортер для сбора метрик NVIDIA vGPU. Собирает данные через SSH с хостов, 
 оснащенных GPU NVIDIA, и предоставляет метрики в формате, совместимом с Prometheus.
 
