@@ -3,16 +3,16 @@
 Prometheus-экспортер для сбора метрик NVIDIA vGPU. Собирает данные через SSH с хостов, 
 оснащенных GPU NVIDIA, и предоставляет метрики в формате, совместимом с Prometheus.
 
-([docker-image](https://hub.docker.com/repository/docker/k1haa/nvidia-vgpu-exporter/general))
+
 
 ## 📦 Особенности
 - Сбор информации о vGPU: профиль, версия драйвера, VM
 - Мониторинг памяти vGPU (Total/Used)
 - Мониторинг утилизации GPU и памяти
-- Готовый дашборд Grafana
 - Минимальные расходы по ресурсам
 - Docker-файл для удобного развертывания
-- Интеграция с gpu-exporter ([remote-nvidia-gpu-exporter](https://github.com/K1haa/remote-nvidia-gpu-exporter))
+- Интеграция с gpu-exporter [remote-nvidia-gpu-exporter](https://github.com/K1haa/remote-nvidia-gpu-exporter)
+- Готовый дашборд Grafana (для совестной работы gpu и vgpu exporter)
 
 ## 📊 Метрики
 | Метрика                             | Описание                          | Лейблы                                         |
@@ -28,7 +28,7 @@ Prometheus-экспортер для сбора метрик NVIDIA vGPU. Соб
 - Prometheus + Grafana (для визуализации)
 
 ## 🐳 Быстрый старт
-### Запуск через Docker
+### Запуск через Docker [image](https://hub.docker.com/repository/docker/k1haa/nvidia-vgpu-exporter/general)
 ```bash
 docker run -d \
   -e APP_USER="ваш_пользователь" \
