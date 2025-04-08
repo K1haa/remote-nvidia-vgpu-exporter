@@ -18,7 +18,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 1,
-    "id": 40,
+    "id": 43,
     "links": [],
     "panels": [
         {
@@ -173,6 +173,7 @@
                         "indexByName": {},
                         "renameByName": {
                             "driver_version": "Driver Version",
+                            "license_status": "License Status",
                             "vgpu_profile": "vGPU Profile",
                             "vm_name": "VM Name"
                         }
@@ -818,7 +819,7 @@
         }
     ],
     "preload": false,
-    "refresh": "30s",
+    "refresh": "5s",
     "schemaVersion": 41,
     "tags": [
         "prometheus",
@@ -830,7 +831,7 @@
             {
                 "allValue": ".*",
                 "current": {
-                    "text": "All",
+                    "text": "ALL",
                     "value": "$__all"
                 },
                 "datasource": {
@@ -857,6 +858,6 @@
     "timepicker": {},
     "timezone": "",
     "title": "NVIDIA GPU & vGPU Monitoring",
-    "uid": "kirill_zherdev_mon",
-    "version": 1
+    "uid": "kirill_zherdev_mon2",
+    "version": 4
 }

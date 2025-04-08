@@ -19,7 +19,7 @@ var (
 	vgpuInfo = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "nvidia_vgpu_info",
 		Help: "Information about vGPU instances",
-	}, []string{"vgpu_id", "vm_name", "vgpu_profile", "driver_version"})
+	}, []string{"vgpu_id", "vm_name", "vgpu_profile", "driver_version", "license_status"}) // Добавлена метка
 
 	vgpuMemory = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "nvidia_vgpu_memory_bytes",
@@ -78,6 +78,7 @@ func parseVGPUInfo(output string) {
 		currentVMName  string
 		currentProfile string
 		driverVersion  string
+		licenseStatus  string // Новая переменная для статуса
 		inMemory       bool
 		inUtilization  bool
 	)
@@ -108,7 +109,15 @@ func parseVGPUInfo(output string) {
 		case strings.HasPrefix(trimmed, "Guest Driver Version"):
 			driverVersion = strings.Split(trimmed, ":")[1]
 			driverVersion = strings.TrimSpace(driverVersion)
-			vgpuInfo.WithLabelValues(currentVGPU, currentVMName, currentProfile, driverVersion).Set(1)
+
+		case strings.HasPrefix(trimmed, "License Status"):
+			status := strings.Split(trimmed, ":")[1]
+			status = strings.TrimSpace(status)
+			licenseStatus = "Unlicensed"
+			if strings.Contains(status, "Licensed") {
+				licenseStatus = "Licensed"
+			}
+			vgpuInfo.WithLabelValues(currentVGPU, currentVMName, currentProfile, driverVersion, licenseStatus).Set(1)
 
 		case strings.HasPrefix(trimmed, "FB Memory Usage"):
 			inMemory = true
